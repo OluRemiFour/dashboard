@@ -13,9 +13,9 @@ export default function HomePage() {
         router.push("/dashboard");
       } else {
         router.push("/login");
-import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+      }
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   return null;
 }
