@@ -12,7 +12,7 @@ function Sidebar() {
     <>
       {/* Toggle Button */}
       <div
-        className="fixed top-4 left-64 bg-white z-50 md:hidden cursor-pointer"
+        className="fixed top-4  bg-white z-50 md:hidden cursor-pointer"
         onClick={toggleSidebar}
       >
         {isOpen ? (
@@ -29,10 +29,16 @@ function Sidebar() {
         } md:translate-x-0 w-64 z-50 overflow-y-auto`}
       >
         <div className="">
-          <div className="flex items-center">
+          <div className="flex items-center justify-between">
             <p className="font-extrabold text-xl mt-6 mx-4">
               <span className="text-[#4880FF]">Dash</span>Stack
             </p>
+            <span>
+              <XMarkIcon
+                className="h-6 w-6 mt-6 text-white "
+                onClick={toggleSidebar}
+              />
+            </span>
           </div>
           <ul className="p-4 mt-8 list-none">
             <li className="mb-4">

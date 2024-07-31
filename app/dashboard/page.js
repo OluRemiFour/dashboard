@@ -23,7 +23,7 @@ const Dashboard = () => {
   return (
     <>
       {user ? (
-        <div className="m-20">
+        <div className="md:m-20">
           <div className="justify-center items-center">
             <h1 className="text-4xl font-bold">Dashboard</h1>
             <p>Welcome to your dashboard!</p>

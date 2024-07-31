@@ -10,6 +10,9 @@ import {
 } from "recharts";
 
 const CoinGeckoChart = () => {
+  const [chartWidth, setChartWidth] = useState(800);
+  const [chartHeight, setChartHeight] = useState(400);
+
   const [data, setData] = useState([]);
   const coinId = "bitcoin";
   const vsCurrency = "usd";
@@ -37,8 +40,28 @@ const CoinGeckoChart = () => {
     fetchData();
   }, [baseURL]);
 
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 768) {
+        setChartWidth(500);
+        setChartHeight(200);
+      } else if (window.innerWidth <= 1024) {
+        setChartWidth(500);
+        setChartHeight(300);
+      } else {
+        setChartHeight(400);
+        setChartWidth(800);
+      }
+
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
+    handleResize();
+  }, []);
+
   return (
-    <LineChart width={800} height={400} data={data}>
+    <LineChart width={chartWidth} height={chartHeight} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="timestamp" />
       <YAxis domain={["auto", "auto"]} />
