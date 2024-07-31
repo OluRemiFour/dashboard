@@ -1,8 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import Navbar from "./_components/Navbar";
 import Sidebar from "./_components/Sidebar";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className="">
           <div className="flex">
-            <Sidebar />
-            <Navbar />
-            <div className="flex-1 md:ml-64 p-4 mt-16">{children}</div>
+            <DarkModeProvider>
+              <Sidebar />
+              <Navbar />
+              <div className="flex-1 md:ml-64 p-4 mt-16">{children}</div>
+            </DarkModeProvider>
           </div>
         </body>
       </html>

@@ -1,8 +1,11 @@
 "use client";
 
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi2";
+import { DarkModeContext, useDarkMode } from "../context/DarkModeContext";
+import { useContext } from "react";
 const Navbar = () => {
+  const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext);
   const { user } = useUser();
 
   return (
@@ -19,6 +22,15 @@ const Navbar = () => {
             <SignOutButton className="py-1 px-3 bg-blue-600 text-white rounded-md" />
           </div>
         )}
+        <div>
+          <button onClick={toggleDarkMode}>
+            {isDarkMode ? (
+              <HiOutlineMoon size={24} color="white" />
+            ) : (
+              <HiOutlineSun size={24} color="white" />
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
