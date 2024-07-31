@@ -35,7 +35,7 @@ function Sidebar() {
             </p>
             <span>
               <XMarkIcon
-                className="h-6 w-6 mt-6 text-white "
+                className="md:hidden h-6 w-6 mt-6 text-white "
                 onClick={toggleSidebar}
               />
             </span>
